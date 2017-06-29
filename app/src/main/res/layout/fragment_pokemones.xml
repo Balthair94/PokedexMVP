@@ -5,6 +5,11 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <include layout="@layout/recycler_view"/>
+    <!--<include layout="@layout/recycler_view"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wellcome to Pokemones Fragment"/>
 
 </LinearLayout>

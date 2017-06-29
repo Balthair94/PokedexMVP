@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
-    tools:context="baltamon.mx.pokedexmvp.MainActivity">
+    tools:context="baltamon.mx.pokedexmvp.views.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
