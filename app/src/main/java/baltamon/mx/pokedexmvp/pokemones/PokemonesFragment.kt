@@ -1,4 +1,4 @@
-package baltamon.mx.pokedexmvp.views
+package baltamon.mx.pokedexmvp.pokemones
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

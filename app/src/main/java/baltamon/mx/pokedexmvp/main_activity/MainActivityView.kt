@@ -1,6 +1,4 @@
-package baltamon.mx.pokedexmvp.views
-
-import baltamon.mx.pokedexmvp.models.Generation
+package baltamon.mx.pokedexmvp.main_activity
 
 /**
  * Created by Baltazar Rodriguez on 28/06/2017.

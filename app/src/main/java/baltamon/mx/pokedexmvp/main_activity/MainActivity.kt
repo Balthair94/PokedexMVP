@@ -1,4 +1,4 @@
-package baltamon.mx.pokedexmvp.views
+package baltamon.mx.pokedexmvp.main_activity
 
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
 import baltamon.mx.pokedexmvp.R
-import baltamon.mx.pokedexmvp.presenters.MainActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 

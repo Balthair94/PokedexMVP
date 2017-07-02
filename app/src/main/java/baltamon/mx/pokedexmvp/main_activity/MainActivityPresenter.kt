@@ -1,4 +1,4 @@
-package baltamon.mx.pokedexmvp.presenters
+package baltamon.mx.pokedexmvp.main_activity
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -8,10 +8,10 @@ import baltamon.mx.pokedexmvp.R
 import baltamon.mx.pokedexmvp.extensions.showLoadDialog
 import baltamon.mx.pokedexmvp.extensions.showToast
 import baltamon.mx.pokedexmvp.models.Generation
+import baltamon.mx.pokedexmvp.presenters.Presenter
 import baltamon.mx.pokedexmvp.providers.GenerationProvider
 import baltamon.mx.pokedexmvp.providers.GenerationProviderInterface
-import baltamon.mx.pokedexmvp.views.MainActivityView
-import baltamon.mx.pokedexmvp.views.PokemonesFragment
+import baltamon.mx.pokedexmvp.pokemones.PokemonesFragment
 
 /**
  * Created by Baltazar Rodriguez on 28/06/2017.
