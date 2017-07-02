@@ -3,19 +3,16 @@ package baltamon.mx.pokedexmvp.views
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
 import baltamon.mx.pokedexmvp.R
-import baltamon.mx.pokedexmvp.extensions.showToast
-import baltamon.mx.pokedexmvp.models.Generation
 import baltamon.mx.pokedexmvp.presenters.MainActivityPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class MainActivity : AppCompatActivity(), MainActivityView {
 
-    val presenter: MainActivityPresenter = MainActivityPresenter(this, this)
+    val presenter: MainActivityPresenter = MainActivityPresenter(this, this, supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +21,6 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         setUpToolbar()
 
         presenter.onCreate()
-    }
-
-    override fun loadFragment(fragmentId: Int, generation: Generation) {
-        val replaceFragment = when (fragmentId){
-            1 -> PokemonesFragment.newInstance(generation.pokemon_species)
-            else -> showToast("No valid fragment")
-        }
-
-        if (replaceFragment is Fragment)
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.frame_layout, replaceFragment)
-                    .commit()
     }
 
     override fun onBackPressed() {

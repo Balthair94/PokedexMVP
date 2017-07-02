@@ -2,6 +2,7 @@ package baltamon.mx.pokedexmvp.views
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import baltamon.mx.pokedexmvp.R
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
 
 
@@ -26,7 +27,7 @@ class PokemonesFragment: Fragment() {
     override fun onCreateView(inflater: android.view.LayoutInflater,
                               container: android.view.ViewGroup?,
                               savedInstanceState: android.os.Bundle?): android.view.View? {
-        val view = inflater.inflate(baltamon.mx.pokedexmvp.R.layout.fragment_pokemones,
+        val view = inflater.inflate(R.layout.fragment_pokemones,
                 container, false)
         return view
     }
