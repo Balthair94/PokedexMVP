@@ -1,6 +1,5 @@
 package baltamon.mx.pokedexmvp.pokemones
 
-import android.content.Context
 import android.view.View
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
 import baltamon.mx.pokedexmvp.presenters.Presenter
@@ -16,8 +15,8 @@ class PokemonesFragmentPresenter(val view: PokemonesFragmentView): Presenter {
         pokemones = list
     }
 
-    fun loadPokemonesList(fragmentView: View){
-        view.showPokemonesList(pokemones!!, fragmentView)
+    fun loadPokemonesList(){
+        view.showPokemonesList(pokemones!!)
     }
 
     override fun onCreate() {

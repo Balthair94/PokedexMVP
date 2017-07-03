@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import baltamon.mx.pokedexmvp.R
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
+import kotlinx.android.synthetic.main.recycler_view.*
 
 
 /**
@@ -40,18 +40,19 @@ class PokemonesFragment: Fragment(), PokemonesFragmentView {
     override fun onCreateView(inflater: android.view.LayoutInflater,
                               container: android.view.ViewGroup?,
                               savedInstanceState: android.os.Bundle?): android.view.View? {
-        val view = inflater.inflate(R.layout.fragment_pokemones,
-                container, false)
-        presenter!!.loadPokemonesList(view)
-        return view
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
-    override fun showPokemonesList(pokemones: ArrayList<NamedAPIResource>, view: View) {
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter!!.loadPokemonesList()
+    }
+
+    override fun showPokemonesList(pokemones: ArrayList<NamedAPIResource>) {
         val adapter = RVAdapterPokemones(pokemones, context)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adapter
+        recycler_view.setHasFixedSize(true)
+        recycler_view.layoutManager = LinearLayoutManager(context)
+        recycler_view.adapter = adapter
     }
 
 }
