@@ -11,13 +11,13 @@ import baltamon.mx.pokedexmvp.move.MovesFragment
 /**
  * Created by Baltazar Rodriguez on 02/07/2017.
  */
-class TabPokemonFragmentAdapter(fm: FragmentManager, pokemon: Pokemon): FragmentPagerAdapter(fm) {
+class TabPokemonFragmentAdapter(fm: FragmentManager, val pokemon: Pokemon): FragmentPagerAdapter(fm) {
 
     val titles = arrayOf("About", "Abilities", "Moves")
 
     override fun getItem(position: Int): Fragment =
         when (position) {
-            0 -> AboutPokemonFragment()
+            0 -> AboutPokemonFragment.newInstance(pokemon)
             1 -> AbilitiesFragment()
             else -> MovesFragment()
         }

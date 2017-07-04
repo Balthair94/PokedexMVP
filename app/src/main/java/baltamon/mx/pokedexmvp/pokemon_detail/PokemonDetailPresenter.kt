@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import baltamon.mx.pokedexmvp.extensions.showLoadDialog
+import baltamon.mx.pokedexmvp.extensions.showToast
 import baltamon.mx.pokedexmvp.models.Pokemon
 import baltamon.mx.pokedexmvp.presenters.Presenter
 import baltamon.mx.pokedexmvp.providers.PokemonProvider
@@ -48,5 +49,6 @@ class PokemonDetailPresenter(val view: PokemonDetailView,
 
     override fun onFailure(fail: String) {
         dialog!!.dismiss()
+        context.showToast(fail)
     }
 }
