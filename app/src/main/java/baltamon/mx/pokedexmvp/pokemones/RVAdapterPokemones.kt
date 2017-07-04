@@ -24,6 +24,7 @@ class RVAdapterPokemones(val pokemones: ArrayList<NamedAPIResource>,
         holder.textView.text = pokemones[position].name
         holder.cv.setOnClickListener {
             val intent = Intent(context, PokemonDetailActivity::class.java)
+            intent.putExtra(INTENT_POKEMON_NAME, pokemones[position].name)
             context.startActivity(intent)
         }
     }

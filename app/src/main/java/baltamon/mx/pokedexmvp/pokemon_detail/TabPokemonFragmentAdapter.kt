@@ -5,12 +5,13 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import baltamon.mx.pokedexmvp.ability.AbilitiesFragment
 import baltamon.mx.pokedexmvp.about_pokemon.AboutPokemonFragment
+import baltamon.mx.pokedexmvp.models.Pokemon
 import baltamon.mx.pokedexmvp.move.MovesFragment
 
 /**
  * Created by Baltazar Rodriguez on 02/07/2017.
  */
-class TabPokemonFragmentAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
+class TabPokemonFragmentAdapter(fm: FragmentManager, pokemon: Pokemon): FragmentPagerAdapter(fm) {
 
     val titles = arrayOf("About", "Abilities", "Moves")
 
