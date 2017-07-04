@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import baltamon.mx.pokedexmvp.R
 import baltamon.mx.pokedexmvp.extensions.inflate
+import baltamon.mx.pokedexmvp.models.Ability
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
 import baltamon.mx.pokedexmvp.viewholders.CVViewHolder
 
@@ -16,6 +17,10 @@ class RVAdapterAbilities(val abilities: ArrayList<NamedAPIResource>,
 
     override fun onBindViewHolder(holder: CVViewHolder, position: Int) {
         holder.textView.text = abilities[position].name
+        holder.cv.setOnClickListener {
+            val dialogFragment = AbilityDialogFragment.newInstance(abilities[position].name)
+            dialogFragment.show(fragmentManager, "Detail")
+        }
     }
 
     override fun getItemCount(): Int = abilities.size
