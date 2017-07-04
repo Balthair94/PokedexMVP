@@ -24,7 +24,11 @@ class TabPokemonFragmentAdapter(fm: FragmentManager, val pokemon: Pokemon): Frag
                 pokemon.abilities.mapTo(abilities) { it.ability }
                 AbilitiesFragment.newInstance(abilities)
             }
-            else -> MovesFragment()
+            else -> {
+                val moves: ArrayList<NamedAPIResource> = ArrayList()
+                pokemon.moves.mapTo(moves) { it.move }
+                MovesFragment.newInstance(moves)
+            }
         }
 
     override fun getCount(): Int = titles.size
