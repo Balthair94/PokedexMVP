@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import baltamon.mx.pokedexmvp.ability.AbilitiesFragment
 import baltamon.mx.pokedexmvp.about_pokemon.AboutPokemonFragment
+import baltamon.mx.pokedexmvp.models.NamedAPIResource
 import baltamon.mx.pokedexmvp.models.Pokemon
 import baltamon.mx.pokedexmvp.move.MovesFragment
 
@@ -18,7 +19,11 @@ class TabPokemonFragmentAdapter(fm: FragmentManager, val pokemon: Pokemon): Frag
     override fun getItem(position: Int): Fragment =
         when (position) {
             0 -> AboutPokemonFragment.newInstance(pokemon)
-            1 -> AbilitiesFragment()
+            1 -> {
+                val abilities: ArrayList<NamedAPIResource> = ArrayList()
+                pokemon.abilities.mapTo(abilities) { it.ability }
+                AbilitiesFragment.newInstance(abilities)
+            }
             else -> MovesFragment()
         }
 
