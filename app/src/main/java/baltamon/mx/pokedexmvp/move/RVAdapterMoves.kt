@@ -16,6 +16,10 @@ class RVAdapterMoves(val moves: ArrayList<NamedAPIResource>,
 
     override fun onBindViewHolder(holder: CVViewHolder, position: Int) {
         holder.textView.text = moves[position].name
+        holder.cv.setOnClickListener {
+            val dialogFragment = MoveDialogFragment.newInstance(moves[position].name)
+            dialogFragment.show(fragmentManager, "Detail")
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CVViewHolder =
