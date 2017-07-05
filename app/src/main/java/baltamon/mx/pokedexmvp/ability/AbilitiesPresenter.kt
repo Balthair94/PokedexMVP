@@ -1,6 +1,7 @@
 package baltamon.mx.pokedexmvp.ability
 
 import android.os.Bundle
+import android.os.Parcelable
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
 import baltamon.mx.pokedexmvp.presenters.Presenter
 
@@ -13,7 +14,7 @@ class AbilitiesPresenter(val view: AbilitiesView, val arguments: Bundle): Presen
     var abilities: ArrayList<NamedAPIResource>? = null
 
     override fun onCreate() {
-        abilities = arguments.getIntegerArrayList(MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
+        abilities = arguments.getParcelableArrayList<Parcelable>(MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
         view.onPokemonAbilities(abilities!!)
     }
 
