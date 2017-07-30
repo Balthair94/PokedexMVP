@@ -21,18 +21,19 @@ class MainActivityPresenter(val view: MainActivityView,
 
     val provider = GenerationProvider(this)
     var dialog: ProgressDialog? = null
+    var generation: Generation? = null
 
     override fun onCreate() {
         dialog = context.showLoadDialog()
         provider.loadPokemonGeneration()
     }
 
-    fun loadFragment(fragmentId: Int, generation: Generation) {
+    fun loadFragment(fragmentId: Int) {
         val replaceFragment = when (fragmentId) {
-            1 -> PokemonesFragment.newInstance(generation.pokemon_species)
-            2 -> MovesFragment.newInstance(generation.moves)
+            1 -> generation?.pokemon_species?.let { PokemonesFragment.newInstance(it) }
+            2 -> generation?.moves?.let { MovesFragment.newInstance(it) }
             3 -> context.showToast("NO DATA")
-            4 -> TypesFragment.newInstance(generation.types)
+            4 -> generation?.types?.let { TypesFragment.newInstance(it) }
             else -> context.showToast("No valid fragment")
         }
 
@@ -43,8 +44,9 @@ class MainActivityPresenter(val view: MainActivityView,
     }
 
     override fun onSuccess(generation: Generation) {
+        this.generation = generation
         dialog?.dismiss()
-        loadFragment(1, generation)
+        loadFragment(1)
     }
 
     override fun onFailure(fail: String) {
