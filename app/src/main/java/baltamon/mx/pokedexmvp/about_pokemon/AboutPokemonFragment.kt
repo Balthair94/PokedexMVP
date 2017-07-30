@@ -39,7 +39,7 @@ class AboutPokemonFragment: Fragment(), AboutPokemonView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = AboutPokemonPresenter(this, arguments)
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onPokemonInformation(pokemon: Pokemon) {

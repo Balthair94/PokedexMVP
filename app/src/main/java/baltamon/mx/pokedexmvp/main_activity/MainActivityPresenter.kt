@@ -3,8 +3,6 @@ package baltamon.mx.pokedexmvp.main_activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import baltamon.mx.pokedexmvp.R
 import baltamon.mx.pokedexmvp.extensions.showLoadDialog
 import baltamon.mx.pokedexmvp.extensions.showToast
 import baltamon.mx.pokedexmvp.models.Generation
@@ -22,7 +20,6 @@ class MainActivityPresenter(val view: MainActivityView,
                             val context: Context) : Presenter, GenerationProviderInterface {
 
     val provider = GenerationProvider(this)
-    var generation: Generation? = null
     var dialog: ProgressDialog? = null
 
     override fun onCreate() {
@@ -30,41 +27,28 @@ class MainActivityPresenter(val view: MainActivityView,
         provider.loadPokemonGeneration()
     }
 
-    fun loadFragment(fragmentId: Int) {
-        if (generation != null) {
-            val replaceFragment = when (fragmentId) {
-                1 -> PokemonesFragment.newInstance(generation!!.pokemon_species)
-                2 -> MovesFragment.newInstance(generation!!.moves)
-                3 -> context.showToast("NO DATA")
-                4 -> TypesFragment.newInstance(generation!!.types)
-                else -> context.showToast("No valid fragment")
-            }
+    fun loadFragment(fragmentId: Int, generation: Generation) {
+        val replaceFragment = when (fragmentId) {
+            1 -> PokemonesFragment.newInstance(generation.pokemon_species)
+            2 -> MovesFragment.newInstance(generation.moves)
+            3 -> context.showToast("NO DATA")
+            4 -> TypesFragment.newInstance(generation.types)
+            else -> context.showToast("No valid fragment")
+        }
 
-            if (replaceFragment is Fragment)
-                view.onFragmentSelected(replaceFragment)
-            else
-                view.onFragmentFailure("View no available")
-        } else
-            view.onFragmentFailure("Null data")
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
+        if (replaceFragment is Fragment)
+            view.onFragmentSelected(replaceFragment)
+        else
+            view.onFragmentFailure("View no available")
     }
 
     override fun onSuccess(generation: Generation) {
-        dialog!!.dismiss()
-        this.generation = generation
-        loadFragment(1)
+        dialog?.dismiss()
+        loadFragment(1, generation)
     }
 
     override fun onFailure(fail: String) {
-        dialog!!.dismiss()
+        dialog?.dismiss()
         context.showToast(fail)
     }
 

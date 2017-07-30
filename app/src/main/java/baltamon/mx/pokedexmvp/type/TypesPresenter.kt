@@ -11,19 +11,9 @@ import baltamon.mx.pokedexmvp.presenters.Presenter
 class TypesPresenter(val view: TypesView, val arguments: Bundle): Presenter {
 
     val MY_OBJECT_KEY = "types_list"
-    var types: ArrayList<NamedAPIResource>? = null
 
     override fun onCreate() {
-        types = arguments.getParcelableArrayList<Parcelable>(MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
-        view.onPokemonTypes(types!!)
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
+        val types = arguments.getParcelableArrayList<Parcelable>(MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
+        view.onPokemonTypes(types)
     }
 }

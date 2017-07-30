@@ -17,7 +17,8 @@ class PokemonProvider(val presenter: PokemonProviderInterface) {
         call.enqueue(object : Callback<Pokemon>{
             override fun onResponse(call: Call<Pokemon>?, response: Response<Pokemon>) {
                 when(response.code()){
-                    200 -> presenter.onSuccess(response.body()!!)
+                    200 -> response.body()?.let { presenter.onSuccess(it) }
+                    else -> presenter.onFailure("NO DATA")
                 }
             }
 

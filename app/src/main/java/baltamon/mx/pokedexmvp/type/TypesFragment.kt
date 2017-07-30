@@ -39,7 +39,7 @@ class TypesFragment: Fragment(), TypesView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = TypesPresenter(this, arguments)
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onPokemonTypes(types: ArrayList<NamedAPIResource>) {

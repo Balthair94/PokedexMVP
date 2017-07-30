@@ -1,34 +1,20 @@
 package baltamon.mx.pokedexmvp.pokemones
 
-import android.view.View
+import android.os.Bundle
+import android.os.Parcelable
 import baltamon.mx.pokedexmvp.models.NamedAPIResource
 import baltamon.mx.pokedexmvp.presenters.Presenter
 
 /**
  * Created by Baltazar Rodriguez on 02/07/2017.
  */
-class PokemonesFragmentPresenter(val view: PokemonesFragmentView): Presenter {
+class PokemonesFragmentPresenter(val view: PokemonesFragmentView, val arguments: Bundle): Presenter {
 
-    var pokemones: ArrayList<NamedAPIResource>? = null
-
-    fun setPokemonesList(list: ArrayList<NamedAPIResource>){
-        pokemones = list
-    }
-
-    fun loadPokemonesList(){
-        view.showPokemonesList(pokemones!!)
-    }
+    val MY_OBJECT_KEY = "pokemones_list"
 
     override fun onCreate() {
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
+        val pokemones = arguments.getParcelableArrayList<Parcelable> (MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
+        view.showPokemonesList(pokemones)
     }
 
 }

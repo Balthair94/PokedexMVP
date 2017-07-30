@@ -16,7 +16,8 @@ class MoveProvider(val presenter: MoveProviderInterface) {
         call.enqueue(object : Callback<Move>{
             override fun onResponse(call: Call<Move>?, response: Response<Move>) {
                 when(response.code()){
-                    200 -> presenter.onSuccess(response.body()!!)
+                    200 -> response.body()?.let { presenter.onSuccess(it) }
+                    else -> presenter.onFailure("NO DATA")
                 }
             }
 

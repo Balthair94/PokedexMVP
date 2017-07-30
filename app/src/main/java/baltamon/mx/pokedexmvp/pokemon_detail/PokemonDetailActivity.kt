@@ -21,7 +21,7 @@ class PokemonDetailActivity: AppCompatActivity(), PokemonDetailView {
         setContentView(R.layout.activity_pokemon_detail)
         setUpToolbar()
         presenter = PokemonDetailPresenter(this, this, intent)
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     fun setUpToolbar(){

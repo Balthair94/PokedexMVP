@@ -40,7 +40,7 @@ class AbilitiesFragment: Fragment(), AbilitiesView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = AbilitiesPresenter(this, arguments)
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onPokemonAbilities(abilities: ArrayList<NamedAPIResource>) {

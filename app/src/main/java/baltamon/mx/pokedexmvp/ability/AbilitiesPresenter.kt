@@ -11,20 +11,10 @@ import baltamon.mx.pokedexmvp.presenters.Presenter
 class AbilitiesPresenter(val view: AbilitiesView, val arguments: Bundle): Presenter {
 
     val MY_OBJECT_KEY = "abilities_list"
-    var abilities: ArrayList<NamedAPIResource>? = null
+    var abilities: ArrayList<NamedAPIResource> = ArrayList()
 
     override fun onCreate() {
         abilities = arguments.getParcelableArrayList<Parcelable>(MY_OBJECT_KEY) as ArrayList<NamedAPIResource>
-        view.onPokemonAbilities(abilities!!)
+        view.onPokemonAbilities(abilities)
     }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
-    }
-
 }

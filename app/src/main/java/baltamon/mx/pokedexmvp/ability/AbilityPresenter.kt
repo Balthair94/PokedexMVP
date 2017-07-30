@@ -17,15 +17,6 @@ class AbilityPresenter(val view: AbilityView, val abilityName: String): Presente
         provider.loadAbility(abilityName)
     }
 
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
-    }
-
     override fun onSuccess(ability: Ability) {
         this.ability = ability
         view.onAbilityInformation(ability)

@@ -41,7 +41,7 @@ class MoveDialogFragment: DialogFragment(), MoveView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = MovePresenter(this, arguments.getString(MY_OBJECT_KEY))
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onPokemonMove(move: Move) {

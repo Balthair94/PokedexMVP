@@ -14,17 +14,9 @@ class AboutPokemonPresenter(val view: AboutPokemonView, val arguments: Bundle): 
     var pokemon: Pokemon? = null
 
     override fun onCreate() {
-        pokemon = arguments.getParcelable<Parcelable>(MY_OBJECT_KEY) as Pokemon
-        view.onPokemonInformation(pokemon!!)
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
+        val pokemon = arguments.getParcelable<Parcelable>(MY_OBJECT_KEY) as Pokemon
+        this.pokemon = pokemon
+        view.onPokemonInformation(pokemon)
     }
 
 }

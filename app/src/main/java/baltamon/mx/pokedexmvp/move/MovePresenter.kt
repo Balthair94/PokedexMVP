@@ -11,19 +11,9 @@ import baltamon.mx.pokedexmvp.providers.MoveProviderInterface
 class MovePresenter(val view: MoveView, val moveName: String): Presenter, MoveProviderInterface {
 
     val provider = MoveProvider(this)
-    var move: Move? = null
 
     override fun onCreate() {
         provider.loadMove(moveName)
-    }
-
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
     }
 
     override fun onSuccess(move: Move) {

@@ -20,9 +20,8 @@ class GenerationProvider (val presenter: GenerationProviderInterface){
 
             override fun onResponse(call: Call<Generation>?, response: Response<Generation>) {
                 when (response.code()){
-                    200 -> {
-                        presenter.onSuccess(response.body()!!)
-                    }
+                    200 -> response.body()?.let { presenter.onSuccess(it) }
+                    else -> presenter.onFailure("NO DATA")
                 }
             }
 

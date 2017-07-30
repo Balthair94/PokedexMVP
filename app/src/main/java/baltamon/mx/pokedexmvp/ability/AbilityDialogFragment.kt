@@ -44,7 +44,7 @@ class AbilityDialogFragment: DialogFragment(), AbilityView {
         tv_ability_description.text = getString(R.string.loading)
 
         presenter = AbilityPresenter(this, arguments.getString(MY_OBJECT_KEY))
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onAbilityInformation(ability: Ability) {

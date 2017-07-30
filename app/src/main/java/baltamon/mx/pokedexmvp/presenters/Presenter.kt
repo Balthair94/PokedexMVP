@@ -5,7 +5,7 @@ package baltamon.mx.pokedexmvp.presenters
  */
 interface Presenter {
     fun onCreate()
-    fun onPause()
-    fun onResume()
-    fun onDestroy()
+    fun onPause(){}
+    fun onResume(){}
+    fun onDestroy(){}
 }

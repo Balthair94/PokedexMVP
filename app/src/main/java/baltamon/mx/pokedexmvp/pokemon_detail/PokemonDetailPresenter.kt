@@ -26,15 +26,6 @@ class PokemonDetailPresenter(val view: PokemonDetailView,
         loadPokemon()
     }
 
-    override fun onPause() {
-    }
-
-    override fun onResume() {
-    }
-
-    override fun onDestroy() {
-    }
-
     fun loadPokemon(){
         dialog = context.showLoadDialog()
         val pokemonName = intent.getStringExtra(INTENT_POKEMON_NAME)
@@ -42,13 +33,13 @@ class PokemonDetailPresenter(val view: PokemonDetailView,
     }
 
     override fun onSuccess(pokemon: Pokemon) {
-        dialog!!.dismiss()
+        dialog?.dismiss()
         this.pokemon = pokemon
         view.onLoadTabView(pokemon)
     }
 
     override fun onFailure(fail: String) {
-        dialog!!.dismiss()
+        dialog?.dismiss()
         context.showToast(fail)
     }
 }

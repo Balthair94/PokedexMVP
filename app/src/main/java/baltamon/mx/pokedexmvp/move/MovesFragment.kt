@@ -39,7 +39,7 @@ class MovesFragment: Fragment(), MovesView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = MovesPresenter(this, arguments)
-        presenter!!.onCreate()
+        presenter?.onCreate()
     }
 
     override fun onPokemonMoves(moves: ArrayList<NamedAPIResource>) {

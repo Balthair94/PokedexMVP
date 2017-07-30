@@ -30,13 +30,6 @@ class PokemonesFragment: Fragment(), PokemonesFragmentView {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        presenter = PokemonesFragmentPresenter(this)
-        presenter!!.setPokemonesList(arguments.getParcelableArrayList<Parcelable>
-        (MY_OBJECT_KEY) as ArrayList<NamedAPIResource>)
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: android.view.LayoutInflater,
                               container: android.view.ViewGroup?,
                               savedInstanceState: android.os.Bundle?): android.view.View? {
@@ -45,14 +38,14 @@ class PokemonesFragment: Fragment(), PokemonesFragmentView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter!!.loadPokemonesList()
+        presenter = PokemonesFragmentPresenter(this, arguments)
+        presenter?.onCreate()
     }
 
     override fun showPokemonesList(pokemones: ArrayList<NamedAPIResource>) {
-        val adapter = RVAdapterPokemones(pokemones, context)
         recycler_view.setHasFixedSize(true)
         recycler_view.layoutManager = LinearLayoutManager(context)
-        recycler_view.adapter = adapter
+        recycler_view.adapter = RVAdapterPokemones(pokemones, context)
     }
 
 }
